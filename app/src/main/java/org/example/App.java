@@ -9,6 +9,32 @@ public class App {
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        Squirrel cheeks = new Squirrel("Cheeks");
+        
+        Squirrel squeaks = new Squirrel("Squeaks");
+        Node nodeTwo = new Node(squeaks);
+        
+        Squirrel fluffybutt = new Squirrel("Mr. Fluffy Butt");
+        Node nodeThree = new Node(fluffybutt);
+
+        BinaryTree tree = new BinaryTree(cheeks);
+        
+        tree.set_left(nodeTwo);
+        tree.set_right(nodeThree);
+        
+        Node retrievedLeft = tree.left(); // This should retrieve the left node
+        Node retrievedRight = tree.right(); // This should retrieve the right node
+
+        System.out.println("Left Node: " + retrievedLeft.data.getName());// This should print "Squeaks"
+        System.out.println("Right Node: " + retrievedRight.data.getName());// This should print "Mr. Fluffy Butt"
+
+        Squirrel sandy = new Squirrel("Sandy");
+        Node nodeFour = new Node(sandy);
+        
+        tree.left().left = nodeFour; // This should set Sandy as the left child of the root
+
+        Node retrievedLeftLeft = tree.left().left; // This should retrieve Sandy
+
+        System.out.println("Left Left Node: " + retrievedLeftLeft.data.getName());// This should print "Sandy"
     }
 }
